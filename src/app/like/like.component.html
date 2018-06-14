@@ -1,0 +1,10 @@
+<div>
+  <span class="glyphicon glyphicon-heart"
+  [class.isLike]="isLiked"
+  (click)="onClick()"></span> 
+  <span>{{ totalLikes }}</span>
+</div>
+
+<input type="text" [appInputFormat]="'lowercase'"><br/>
+
+<!-- class binding  -->

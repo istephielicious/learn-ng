@@ -1,0 +1,24 @@
+<!-- <bootstrap-panel>
+    <ng-container class="heading">{{ title }}</ng-container>
+    <div class="panel-body">Body</div>
+</bootstrap-panel> -->
+
+<!-- div.zipp>div.heading+div.body -->
+<div class="zippy">
+  <div 
+  class="zippy-heading"
+  [class.expanded]="isExpanded"
+  (click)="toggle()">
+  {{ title }}
+  <span class="glyphicon" 
+  [ngClass]= "{
+    'glyphicon-chevron-up': isExpanded,
+    'glyphicon-chevron-down': !isExpanded
+  }"></span>
+  </div>
+  <div *ngIf="isExpanded" class="zipp-body">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<!-- <ng-content></ng-content>  to inject content-->

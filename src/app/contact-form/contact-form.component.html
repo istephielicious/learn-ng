@@ -1,0 +1,75 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div *ngIf="!contact.valid && contact.touched">Check fields!</div>
+    <div class="form-goup">
+      <!-- label+input[type='text'].form-control zen coding-->
+      <label for="firstName">First Name</label>
+      <input
+        required
+        minlength="3"
+        maxlength="10" 
+        pattern="banana"
+        ngModel
+        name="fName" 
+        #fName="ngModel"
+        id="firstName"
+        type="text"
+        class="form-control">
+      <div 
+        class="alert alert-danger" 
+        *ngIf="fName.touched && !fName.valid">
+        <div *ngIf="fName.errors.required">
+          First name is required!
+        </div>
+        <div *ngIf="fName.errors.minlength">
+          First name should be a minimum of {{ fName.errors.minlength.requiredLength }} characters
+        </div>
+        <div *ngIf="fName.errors.pattern">
+          First name does not match the pattern
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea 
+    required
+    minlength="3"
+    ngModel
+    name="comment"
+    #comment="ngModel"
+    id="comment" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribe"> Subscribe to mailing list
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <select multiple ngModel name="contactMethod" id="contactMethod" class="form-control">
+      <option 
+      *ngFor="let method of contactMethods" 
+      [ngValue]="method">{{method.name}}</option>
+    </select>
+  </div>
+
+  <div *ngFor="let method of contactMethods"class="radio">
+    <label>
+      <input ngModel type="radio" name="contactMethod" [value]="method.id">
+      {{ method.name }}
+    </label>
+  </div>
+
+  <p>
+    {{ f.value | json }}
+  </p>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
+
+<!-- ngForm has output property submit, while ngModelGroup doesn't -->
+<!--  [value]: attr/property binding only binds string, while [ngValue] binds complex objects-->
