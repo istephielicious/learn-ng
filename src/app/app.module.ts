@@ -1,7 +1,7 @@
 import { CoursesService } from './courses/courses.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -16,6 +16,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { InstructorFormComponent } from './instructor-form/instructor-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,13 @@ import { InstructorFormComponent } from './instructor-form/instructor-form.compo
     InputFormatDirective,
     ZippyComponent,
     ContactFormComponent,
-    InstructorFormComponent
+    InstructorFormComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
