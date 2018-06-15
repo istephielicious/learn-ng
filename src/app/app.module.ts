@@ -1,7 +1,9 @@
+import { PostService } from './services/post.service';
 import { CoursesService } from './courses/courses.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -18,6 +20,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { InstructorFormComponent } from './instructor-form/instructor-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePassFormComponent } from './change-pass-form/change-pass-form.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +39,16 @@ import { ChangePassFormComponent } from './change-pass-form/change-pass-form.com
     ContactFormComponent,
     InstructorFormComponent,
     SignupFormComponent,
-    ChangePassFormComponent
+    ChangePassFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [CoursesService],
+  providers: [CoursesService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
