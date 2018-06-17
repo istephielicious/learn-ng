@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { NotFoundErr } from './../common/not-found-error';
 import { AppErr } from './../common/app-error';
 import { PostService } from './../services/post.service';
@@ -14,14 +15,10 @@ export class PostsComponent implements OnInit {
   constructor(private service: PostService) {}
 
    ngOnInit() {
-      this.service.getPosts()
+      this.service.getAll()
         .subscribe(
           response=> {
             this.posts = response.json();
-          }, 
-          error=> {
-            alert('An unexpected error occurred.');
-            console.log(error);
           });
    }
 
@@ -29,47 +26,39 @@ export class PostsComponent implements OnInit {
     let post = {title: input.value};
     input.value = '';
     
-    this.service.createPost(post)
+    this.service.create(post)
       .subscribe(
         response => {
           post['id'] = response.json().id;
           this.posts.splice(0, 0, post);
         }, 
-        (error: Response)=> {
-          if(error.status === 400) {
-            //form: this.form.setErrors(error.json()); if you have form.
+        (error: AppErr)=> {
+          if(error instanceof BadInput) {
+            // this.form.setErrors(error.originalError);
           }
-          else {
-            alert('An unexpected error occurred.');
-            console.log(error);
-          }
+          else throw(error);
         });
    }
 
    updatePost(post) {
-    this.service.updatePost(post)
+    this.service.update(post)
       .subscribe(
         response=> {
           console.log(response.json)
-        }, 
-        error=> {
-          alert('An unexpected error occurred.');
-          console.log(error);
         });
    }
 
    deletePost(post) {
-     this.service.deletePost(500)
+     this.service.delete(500)
       .subscribe(
         response=> {
           let index= this.posts.indexOf(post);
           this.posts.splice(index, 1);
         }, 
-        (error: AppErr)=> {
+        (error: AppErr) => {
           if(error instanceof NotFoundErr)
             alert('This post has already been deleted');
-          else
-            alert('An unexpected error occurred.');
+          else throw(error);
         });
    }
 
