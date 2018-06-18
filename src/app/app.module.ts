@@ -1,3 +1,4 @@
+import { FollowerService } from './services/follower.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { CoursesService } from './courses/courses.service';
@@ -22,6 +23,7 @@ import { InstructorFormComponent } from './instructor-form/instructor-form.compo
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePassFormComponent } from './change-pass-form/change-pass-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { FollowersComponent } from './followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { PostsComponent } from './posts/posts.component';
     InstructorFormComponent,
     SignupFormComponent,
     ChangePassFormComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { PostsComponent } from './posts/posts.component';
   providers: [
     CoursesService, 
     PostService,
+    FollowerService,
     {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
