@@ -1,4 +1,4 @@
-<div class="media" *ngFor="let follower of followers">
+<!-- <div class="media" *ngFor="let follower of followers">
   <div class="media-left">
     <a href=#>
       <img class="avatar media-object" src="{{ follower.avatar_url }}" alt="">
@@ -9,4 +9,8 @@
     <a href="follower.html_url">{{ follower.html_url }}</a>
 
   </div>
-</div>
+</div> -->
+
+<ul>
+  <li *ngFor="let employee of followers">{{ employee.firstname }}</li>
+</ul>

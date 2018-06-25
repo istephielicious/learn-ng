@@ -53,7 +53,7 @@ import { FollowersComponent } from './followers/followers.component';
     HttpModule
   ],
   providers: [
-    CoursesService, 
+    CoursesService,
     PostService,
     FollowerService,
     {provide: ErrorHandler, useClass: AppErrorHandler}

@@ -1,15 +1,15 @@
-import { ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms";
+import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 export class PasswordValidators {
     static isEqualOldPass(control: AbstractControl): Promise<ValidationErrors | null> {
         return new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                
-                if(control.value === '1234')
+            setTimeout(() => {
+
+                if (control.value === '1234')
                     resolve(null);
                 else
                     resolve({ isEqualOldPass: true});
-            },2000);
+            }, 2000);
         });
     }
     // static passwordsShouldMatch(newPass): ValidatorFn {
@@ -21,11 +21,11 @@ export class PasswordValidators {
     //     }
     // }
 
-    static passwordsShouldMatch(control: AbstractControl) : ValidationErrors | null {
-        let newPass = control.get('newPass');
-        let confirmPass = control.get('confirmPass');
-        
-        if(newPass.value !== confirmPass.value)
+    static passwordsShouldMatch(control: AbstractControl): ValidationErrors | null {
+        const newPass = control.get('newPass');
+        const confirmPass = control.get('confirmPass');
+
+        if (newPass.value !== confirmPass.value)
             return {passwordsShouldMatch: true};
         return null;
     }

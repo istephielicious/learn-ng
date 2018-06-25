@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./followers.component.css']
 })
 export class FollowersComponent implements OnInit {
-  followers :any[];
-  constructor(private service: FollowerService) { 
+  followers: any[];
+  constructor(private service: FollowerService) {
     console.log(this.followers);
   }
 
   ngOnInit() {
     this.service.getAll()
-      .subscribe(followers=> this.followers = followers);
+      .subscribe(followers => this.followers = followers);
   }
 }

@@ -20,7 +20,7 @@ export class DataService {
   getAll() {
     return this.http.get(this.url)
       .map(response => response.json())
-      .catch(this.handleError);    
+      .catch(this.handleError);
   }
 
   create(resource) {
@@ -33,25 +33,24 @@ export class DataService {
 
   update(resource) {
     //  this.http.put(this.url, JSON.stringify(post));
-    return this.http.patch(this.url+'/'+resource.id , JSON.stringify({isRead:true}))
+    return this.http.patch(this.url + '/' + resource.id , JSON.stringify({isRead: true}))
       .map(response => response.json())
       .catch(this.handleError);
   }
 
   delete(id) {
-    return this.http.delete(this.url+'/'+id)
+    return this.http.delete(this.url + '/' + id)
       .map(response => response.json())
-      // .toPromise() 
+      // .toPromise()
       // .retry(3)
       .catch(this.handleError);
   }
 
   private handleError(error: Response) {
-    if(error.status === 404)
+    if (error.status === 404)
       return Observable.throw(new NotFoundErr());
-    if(error.status === 400)
+    if (error.status === 400)
       return Observable.throw(new BadInput(error.json()));
-    
-    return Observable.throw(new AppErr(error.json()))
+    return Observable.throw(new AppErr(error.json()));
   }
 }

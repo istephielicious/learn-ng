@@ -12,10 +12,10 @@ export class ChangePassFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
-      oldPass: ['', Validators.required, 
+      oldPass: ['', Validators.required,
                     PasswordValidators.isEqualOldPass],
 
-      newPass: ['', [Validators.required, 
+      newPass: ['', [Validators.required,
                     Validators.minLength(4)]],
 
       confirmPass: ['', [Validators.required]]

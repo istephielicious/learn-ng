@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService extends DataService{
-  
-  constructor(http: Http) { 
+export class PostService extends DataService {
+
+  constructor(http: Http) {
     super ('https://jsonplaceholder.typicode.com/posts', http);
   }
 
@@ -45,7 +45,7 @@ export class PostService extends DataService{
 
   // getPosts() {
   //   return this.http.get(this.url)
-  //     .catch(this.handleError);    
+  //     .catch(this.handleError);
   // }
 
   // createPost(post) {
@@ -69,7 +69,7 @@ export class PostService extends DataService{
   //     return Observable.throw(new NotFoundErr());
   //   if(error.status === 400)
   //     return Observable.throw(new BadInput(error.json()));
-    
+
   //   return Observable.throw(new AppErr(error.json()))
   // }
 }
