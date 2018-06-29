@@ -9,23 +9,23 @@ import { FaveArgs } from './favorite/favorite.component';
 export class AppComponent {
   title = 'Angular';
   courses = [
-    {id:1, name: "Course1"},
-    {id:2, name: "Course2"},
-    {id:3, name: "Course3"}
+    {id: 1, name: 'Course1'},
+    {id: 2, name: 'Course2'},
+    {id: 3, name: 'Course3'}
   ];
   post = {
-    title: "Title",
+    title: 'Title',
     isFavorite: true
   };
 
   tweet = {
-    body: "Here is the body of the tweet...",
+    body: 'Here is the body of the tweet...',
     isLiked: false,
     likesCount: 1
   };
 
 
   onfaveChange(args: FaveArgs) {
-    console.log("changed: ", args);
+    console.log('changed: ', args);
   }
 }

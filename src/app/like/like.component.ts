@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LikeComponent {
 
-  @Input('likesCount') totalLikes : number;
-  @Input('isActive') isLiked: boolean = false;
+  @Input('likesCount') totalLikes: number;
+  @Input('isActive') isLiked = false;
 
   onClick() {
     this.totalLikes += (!this.isLiked) ? 1 : (this.totalLikes > 0) ? -1 : 0;
