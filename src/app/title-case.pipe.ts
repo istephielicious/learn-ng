@@ -6,23 +6,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TitleCasePipe implements PipeTransform {
 
   transform(value: string): any {
-    if(!value) return null;
+    if (!value) return null;
 
-    let words = value.split(' ');
-    for(let i=0; i < words.length; i++) {
-      let word = words[i];
-      if(this.isPreposition(word) && i > 0)
+    const words = value.split(' ');
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      if (this.isPreposition(word) && i > 0)
         words[i] = word.toLowerCase();
       else
-        words[i] = this.toTitleCase(word);    
+        words[i] = this.toTitleCase(word);
     }
 
     return words.join(' ');
   }
 
   private isPreposition(word: string): boolean {
-    let prepositions = ['of', 'the'];
-    if(prepositions.includes(word.toLowerCase())) return true;
+    const prepositions = ['of', 'the'];
+    if (prepositions.includes(word.toLowerCase())) return true;
     return false;
   }
 
